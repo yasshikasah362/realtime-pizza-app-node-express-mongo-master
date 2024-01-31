@@ -1,6 +1,7 @@
 const User = require('../../models/user')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
+const admin = require('../middlewares/admin')
 function authController() {
     const _getRedirectUrl = (req) => {
         return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders'
@@ -79,7 +80,8 @@ function authController() {
         logout(req, res) {
           req.logout()
           return res.redirect('/login')  
-        }
+        },
+        
     }
 }
 
